@@ -1,0 +1,46 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIFF Image Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #image-section {
+            width: 80%;
+            margin: 20px auto;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #zoomable-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.2s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">TIFF Image Viewer</h1>
+    <div id="image-section">
+        <img id="zoomable-image" src="{{ url_for('static', filename='jpg/google_satellite.jpg', _external=True) }}" alt="TIFF Image">
+    </div>
+
+    <script>
+        // Add zoom functionality using the wheel event
+        document.getElementById('image-section').addEventListener('wheel', function (e) {
+            e.preventDefault();
+            var zoom = e.deltaY > 0 ? 1.1 : 0.9; // Increase or decrease zoom factor as needed
+            document.getElementById('zoomable-image').style.transform = 'scale(' + zoom + ')';
+        });
+    </script>
+</body>
+</html>

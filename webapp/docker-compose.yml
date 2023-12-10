@@ -1,0 +1,10 @@
+version: '3'
+services:
+  flask-app:
+    build: .
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./app.py:/app/app.py
+      - ./templates:/app/templates
+      - ./static:/app/static
