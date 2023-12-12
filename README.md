@@ -13,8 +13,8 @@ Before running the code, make sure you have the following technologies installed
 1. Clone this repository to your local machine:
 
     ```bash
-    git clone https://github.com/your-username/your-repo.git
-    cd your-repo
+    git clone https://github.com/Romanian-Space-Initiative/Geospatial-Intelligence-Workshop.git
+    cd Geospatial-Intelligence-Workshop
     ```
 
 2. Build the Docker image:
