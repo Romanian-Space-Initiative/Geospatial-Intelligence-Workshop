@@ -19,13 +19,19 @@ Make sure you have the following installed on your local machine:
    cd Geospatial-Intelligence-Workshop/webapp
    ```
 
-2. **Build and run the Docker container:**
+2. **Build the Docker container:**
 
    ```bash
-   docker-compose up --build
+   docker-compose build
    ```
 
-3. **Open your web browser and go to** [http://localhost:5001](http://localhost:5001) **to access the web application.**
+3. **Run the Docker container:**
+
+   ```bash
+   docker-compose up
+   ```
+
+4. **Open your web browser and go to** [http://localhost:5001](http://localhost:5001) **to access the web application.**
 
 ## Running the Unsupervised Classification Workflow
 
