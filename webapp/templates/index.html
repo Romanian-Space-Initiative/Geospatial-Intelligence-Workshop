@@ -8,7 +8,6 @@
     <style>
         body {
             margin: 0;
-            overflow: hidden;
             font-family: 'Arial', sans-serif;
         }
 
@@ -17,7 +16,8 @@
             margin: 20px auto;
             border: 2px solid #3498db;
             border-radius: 10px;
-            overflow: hidden;
+            overflow: hidden; /* Disable auto scrolling for the section */
+            cursor: grab; /* Set the cursor to the grab hand */
         }
 
         #zoomable-image {
@@ -25,6 +25,7 @@
             height: 100%;
             object-fit: contain;
             transition: transform 0.2s ease-out;
+            cursor: grab; /* Set the cursor to the grab hand */
         }
     </style>
 </head>
@@ -35,11 +36,60 @@
     </div>
 
     <script>
-        // Add zoom functionality using the wheel event
+        var isDragging = false;
+        var startX, startY, scrollLeft, scrollTop;
+
+        document.getElementById('image-section').addEventListener('mousedown', function (e) {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            scrollLeft = this.scrollLeft;
+            scrollTop = this.scrollTop;
+            this.style.cursor = 'grabbing'; /* Set the cursor to the grabbing hand */
+        });
+
+        document.getElementById('image-section').addEventListener('mouseup', function () {
+            isDragging = false;
+            this.style.cursor = 'grab'; /* Set the cursor back to the grab hand */
+        });
+
+        document.getElementById('image-section').addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+            var x = e.clientX - startX;
+            var y = e.clientY - startY;
+            this.scrollLeft = scrollLeft - x;
+            this.scrollTop = scrollTop - y;
+        });
+
+        document.getElementById('image-section').addEventListener('mouseleave', function () {
+            isDragging = false;
+            this.style.cursor = 'grab'; /* Set the cursor back to the grab hand */
+        });
+
+        var zoomFactor = 1;
+
         document.getElementById('image-section').addEventListener('wheel', function (e) {
             e.preventDefault();
-            var zoom = e.deltaY > 0 ? 1.1 : 0.9; // Increase or decrease zoom factor as needed
-            document.getElementById('zoomable-image').style.transform = 'scale(' + zoom + ')';
+
+            // Calculate the cursor position relative to the image
+            var boundingBox = e.target.getBoundingClientRect();
+            var x = e.clientX - boundingBox.left;
+            var y = e.clientY - boundingBox.top;
+
+            // Adjust zoom factor based on cursor position
+            var zoom = e.deltaY > 0 ? 1.1 : 0.9;
+            zoomFactor *= zoom;
+            document.getElementById('zoomable-image').style.transform = 'scale(' + zoomFactor + ')';
+            
+            // Adjust scroll position to keep the cursor in the same relative position
+            var newX = x * (1 - zoom);
+            var newY = y * (1 - zoom);
+            e.target.scrollLeft += newX;
+            e.target.scrollTop += newY;
+        });
+
+        document.getElementById('image-section').addEventListener('scroll', function () {
+            document.getElementById('zoomable-image').style.transform = 'translate(' + -this.scrollLeft + 'px, ' + -this.scrollTop + 'px) scale(' + zoomFactor + ')';
         });
     </script>
 </body>
