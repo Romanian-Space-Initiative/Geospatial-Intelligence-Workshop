@@ -7,8 +7,7 @@ This repository contains code and data for a geospatial intelligence workshop co
 ### Prerequisites
 Make sure you have the following installed on your local machine:
 
-- Python 3.8 or higher
-- Docker
+ **Docker:** Install Docker on your machine by following the instructions provided [here](https://docs.docker.com/get-docker/).
 
 ### Running the Web Application
 
@@ -37,9 +36,9 @@ Make sure you have the following installed on your local machine:
 
 For the first part of the workshop, we will use a Google Colab notebook. Follow these steps:
 
-1. **Open a new notebook using your Google account:** [Google Colab](https://colab.research.google.com/).
+1. **Open a new notebook using your Google account(and if you do not have one, please create it):** [Google Colab](https://colab.research.google.com/).
 
-2. **Download the following files locally:**
+2. **Download the following files locally(This is already done if you cloned the repository on you computer):**
 
    - All .tif images from the "S2_data" folder
    - All files from the "ValidationData" folder
