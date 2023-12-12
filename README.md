@@ -1,6 +1,3 @@
-Certainly! Here is the raw Markdown code:
-
-```markdown
 # Geospatial Intelligence Workshop
 
 This repository contains code and data for a geospatial intelligence workshop covering unsupervised land cover classification with Sentinel-2 data.
