@@ -1,6 +1,3 @@
-Certainly! Here is the raw Markdown code:
-
-```markdown
 # Geospatial Intelligence Workshop
 
 This repository contains code and data for a geospatial intelligence workshop covering unsupervised land cover classification with Sentinel-2 data.
@@ -10,8 +7,7 @@ This repository contains code and data for a geospatial intelligence workshop co
 ### Prerequisites
 Make sure you have the following installed on your local machine:
 
-- Python 3.8 or higher
-- Docker
+ **Docker:** Install Docker on your machine by following the instructions provided [here](https://docs.docker.com/get-docker/).
 
 ### Running the Web Application
 
@@ -22,21 +18,27 @@ Make sure you have the following installed on your local machine:
    cd Geospatial-Intelligence-Workshop/webapp
    ```
 
-2. **Build and run the Docker container:**
+2. **Build the Docker container:**
 
    ```bash
-   docker-compose up --build
+   docker-compose build
    ```
 
-3. **Open your web browser and go to** [http://localhost:5001](http://localhost:5001) **to access the web application.**
+3. **Run the Docker container:**
+
+   ```bash
+   docker-compose up
+   ```
+
+4. **Open your web browser and go to** [http://localhost:5001](http://localhost:5001) **to access the web application.**
 
 ## Running the Unsupervised Classification Workflow
 
 For the first part of the workshop, we will use a Google Colab notebook. Follow these steps:
 
-1. **Open a new notebook using your Google account:** [Google Colab](https://colab.research.google.com/).
+1. **Open a new notebook using your Google account(and if you do not have one, please create it):** [Google Colab](https://colab.research.google.com/).
 
-2. **Download the following files locally:**
+2. **Download the following files locally(This is already done if you cloned the repository on you computer):**
 
    - All .tif images from the "S2_data" folder
    - All files from the "ValidationData" folder
